@@ -1,0 +1,27 @@
+services:
+
+  postgres:
+    image: postgres:16
+    container_name: smart_places_db
+
+    environment:
+      POSTGRES_USER: smartuser
+      POSTGRES_PASSWORD: smartpass
+      POSTGRES_DB: smart_places
+
+    ports:
+      - "5435:5432"
+
+    volumes:
+      - smart_places_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+
+    container_name: smart_places_redis
+
+    ports:
+      - "6380:6379"
+
+volumes:
+  smart_places_data:
